@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { ACTIVITY_LEVELS, GOALS, MEAL_TYPES, SEXES, computeNeeds, ProfileError } from './nutrition.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
@@ -16,6 +17,27 @@ app.get('/api/health', (req, res) => {
     apiKeyConfigured: Boolean(process.env.ANTHROPIC_API_KEY),
     model: process.env.CLAUDE_MODEL || 'claude-opus-5-5',
   });
+});
+
+// Listes de choix pour le formulaire (activité, objectif, type de repas, sexe)
+app.get('/api/options', (req, res) => {
+  const labels = (obj) => Object.entries(obj).map(([id, v]) => ({ id, label: typeof v === 'string' ? v : v.label }));
+  res.json({
+    sexes: labels(SEXES),
+    activityLevels: labels(ACTIVITY_LEVELS),
+    goals: labels(GOALS),
+    mealTypes: labels(MEAL_TYPES),
+  });
+});
+
+// Besoins nutritionnels calculés à partir du profil
+app.post('/api/nutrition', (req, res) => {
+  try {
+    res.json(computeNeeds(req.body));
+  } catch (err) {
+    if (err instanceof ProfileError) return res.status(400).json({ error: 'Profil invalide', details: err.errors });
+    throw err;
+  }
 });
 
 app.use(express.static(PUBLIC_DIR));
