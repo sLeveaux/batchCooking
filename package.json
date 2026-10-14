@@ -1,0 +1,19 @@
+{
+  "name": "batch-cooking",
+  "version": "0.1.0",
+  "description": "Application locale de génération de recettes de batch cooking avec l'IA Claude",
+  "main": "server/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "dev": "node --watch --env-file-if-exists=.env server/index.js"
+  },
+  "engines": {
+    "node": ">=22.9"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "express": "^4.22.3"
+  }
+}

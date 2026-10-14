@@ -1,0 +1,23 @@
+D:\Developpement\pao\batchCooking
+
+Recettes selon:
+Profil vege vegan flexi Viande ? Poisson ? Oeuf ?
+Nombre de personnes ?
+Facilement conservable
+Axé produit de saison ?
+Type de cuisine ? (Ex : asiatique, italien...)
+Type de plat ? (Ptit dej/dejeuner/diner/encas )
+Age sexe poids sportif/sedentaire ?
+Objectif prise de masse/seche/maintien?
+mettre une recette en favoris
+
+>> Recettes + Génération liste de course avec la recette associée à chaque plats
+
+> application web création de recette en fonction de différents critères 
+ qui tourne en local avec branche github
+> html et css 
+> se baser sur le dossier batchCooking
+> pas besoin de base de donneés, voir si possible de stocker les recettes en local
+dans des fichiers json ? 
+> pose moi des questions si ce n'est pas clair
+
