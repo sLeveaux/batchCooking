@@ -27,6 +27,12 @@ Puis ouvrez http://localhost:3000.
 
 `npm run dev` relance automatiquement le serveur à chaque modification du code.
 
+## Tests
+
+```bash
+npm test
+```
+
 ## Données
 
 Les recettes, favoris, profil et liste de courses sont stockés dans `data/` (fichiers JSON). Ils ne sont pas envoyés sur GitHub (`.gitignore`).
